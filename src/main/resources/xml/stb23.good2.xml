@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:stb xmlns:p="http://univrouen.fr/stb23" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://univrouen.fr/stb23 stb23.tp1.xsd ">
+  <client>
+    <entity>Universite de Rouen</entity>
+    <person lastname="Macadre">Bruno</person>
+    <mail>bruno.macadre@univ-rouen.fr</mail>
+  </client>
+  <team>
+    <member>
+	  <person lastname="Lovicourt">Leo</person>
+      <mail>leo.lovicourt@univ-rouen.fr</mail>
+      <function>Developpeur</function>
+    </member>
+    <member>
+      <person lastname="Guerrier">Sebastien</person>
+      <mail>sebastien.guerrier@univ-rouen.fr</mail>
+      <function>Testeur</function>
+    </member>
+  </team>
+  <features>
+    <feature name="Authentification" number="1" section="1">
+      <description>Creer un super jeu</description>
+      <priority>9</priority>
+    </feature>
+  </features>  
+  <version>0.1</version>
+  <title>Agora</title>
+  <date>2022-01-27T00:00:00</date>
+  <description>Projet Agora</description>
+</p:stb>

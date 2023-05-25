@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:stb xmlns:p="http://univrouen.fr/stb23" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://univrouen.fr/stb23 stb23.tp1.xsd ">
+  <title>POCmoX</title>
+  <version>0.1</version>
+  <date>04/03/2022</date>
+  <description>Projet POCMoX</description>
+  <client>
+    <entity>Universite de Rouen</entity>
+    <person lastname="Macadre">Bruno</person>
+    <mail>bruno.macadre@univ-rouen.fr</mail>
+  </client>
+  <team>
+    <member>
+   	  <function>Le boss quoi</function>
+	  <person lastname="Elie">Jordan</person>
+      <mail>jordan.elie@univ-rouen.fr</mail>
+    </member>
+  </team>
+  <features>
+    <feature name="Authentification" number="1" section="1">
+      <description>L'authentification d'un utilisateur</description>
+      <priority>9</priority>
+    </feature>
+    <feature name="Creation de VM" number="1" section="2">
+      <description>Creation d'une VM sur Proxmox</description>
+      <priority>8</priority>
+    </feature>
+  </features>
+</p:stb>
