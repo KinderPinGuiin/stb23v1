@@ -17,7 +17,7 @@ public class STBSummariesDTO {
     /**
      * The STB summaries.
      */
-    @XmlElement
+    @XmlElement(name = "summary")
     private List<STBSummaryDTO> summaries;
 
     /**

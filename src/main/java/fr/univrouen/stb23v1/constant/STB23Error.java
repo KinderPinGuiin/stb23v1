@@ -11,6 +11,7 @@ public enum STB23Error {
     CANT_GET_HOME_PAGE("Can't get the home page."),
     CANT_GET_HELP_PAGE("Can't get the help page."),
     STB_NOT_FOUND("Can't get the help page.", 404),
+    CANT_CONVERT_STB_TO_HTML("Can't convert the STB to an HTML view."),
     CANT_VALIDATE_STB("Can't validate the STB (Internal server error)."),
     STB_IS_NOT_VALID("The given STB is not valid.", 400);
 

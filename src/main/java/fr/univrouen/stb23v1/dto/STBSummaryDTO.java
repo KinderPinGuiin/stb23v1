@@ -36,7 +36,7 @@ public class STBSummaryDTO implements DTO {
     /**
      * The STB client entity name.
      */
-    @XmlElement
+    @XmlElement(name = "client-entity")
     private String clientEntity;
 
     /**

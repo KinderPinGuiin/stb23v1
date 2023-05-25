@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "stb")
-@XmlRootElement(name = "stb")
+@XmlRootElement(name = "stb", namespace = "http://univrouen.fr/stb23")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class STB {
 

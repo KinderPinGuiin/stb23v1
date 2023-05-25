@@ -7,15 +7,18 @@ import fr.univrouen.stb23v1.constant.STBStatus;
 import fr.univrouen.stb23v1.dao.ResourcesDAO;
 import fr.univrouen.stb23v1.dao.repository.STBRepository;
 import fr.univrouen.stb23v1.dto.STBStatusDTO;
+import fr.univrouen.stb23v1.dto.STBSummariesDTO;
 import fr.univrouen.stb23v1.dto.error.STBError;
 import fr.univrouen.stb23v1.dto.error.SimpleErrorDTO;
 import fr.univrouen.stb23v1.exception.FunctionalException;
 import fr.univrouen.stb23v1.model.STB;
 import fr.univrouen.stb23v1.service.ISTBService;
 import fr.univrouen.stb23v1.service.IXMLService;
+import jakarta.xml.bind.JAXBException;
 import org.springframework.stereotype.Service;
 import org.xml.sax.SAXException;
 
+import javax.xml.transform.TransformerException;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -64,6 +67,45 @@ public class STBService implements ISTBService {
         }
 
         return stb;
+    }
+
+    @Override
+    public String getSTBAsHTML(Integer id) throws FunctionalException {
+        // Get the STB
+        STB stb = this.getSTB(id);
+
+        // Convert it to HTML
+        String result;
+        try {
+            result = this.xmlService.transformXML(
+                this.xmlService.xmlToString(stb, STB.class),
+                this.resourcesDAO.loadResourceAsFile(Resource.STB_XSLT_PATH)
+            );
+        } catch (JAXBException | IOException | TransformerException e) {
+            System.out.println(e.getMessage());
+            throw new FunctionalException(e.getMessage(), new STBStatusDTO(id, STBStatus.ERROR));
+        }
+
+        return result;
+    }
+
+    @Override
+    public String stbSummariesToHTML(STBSummariesDTO stbSummaries) throws FunctionalException {
+        String result;
+        try {
+            result = this.xmlService.transformXML(
+                this.xmlService.xmlToString(stbSummaries, STBSummariesDTO.class),
+                this.resourcesDAO.loadResourceAsFile(Resource.STB_SUMMARIES_XSLT_PATH)
+            );
+        } catch (JAXBException | IOException | TransformerException e) {
+            System.out.println(e.getMessage());
+            throw new FunctionalException(
+                e.getMessage(),
+                new SimpleErrorDTO(STB23Error.CANT_CONVERT_STB_TO_HTML.getErrorMessage())
+            );
+        }
+
+        return result;
     }
 
     @Override

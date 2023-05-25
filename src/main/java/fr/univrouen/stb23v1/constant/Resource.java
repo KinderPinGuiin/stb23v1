@@ -20,4 +20,14 @@ public class Resource {
      */
     public static final String STB_XSD_PATH = "xml/stb.xsd";
 
+    /**
+     * The XSLT file to convert STB to an HTML.
+     */
+    public static final String STB_XSLT_PATH = "xml/stb23.xslt";
+
+    /**
+     * The XSLT file to convert the STB summaries to an HTML.
+     */
+    public static final String STB_SUMMARIES_XSLT_PATH = "xml/stb23-summaries.xslt";
+
 }
