@@ -50,6 +50,12 @@ document.querySelector("#stb-insert-input").addEventListener("change", (e) => {
 // Add an ID input if the selected request needs an ID
 const getRequestSelector = document.querySelector(".get-request-selector select");
 getRequestSelector.addEventListener("change", (e) => {
+  // Remove the ID input container
+  const idInputContainer = document.querySelector(".get-request-id-container");
+  if (idInputContainer != null) {
+    idInputContainer.remove();
+  }
+  
   if (e.target.selectedOptions[0].dataset.requireId !== undefined) {
     // Add the ID input
     if (document.querySelector("get-request-id-container") == undefined) {
@@ -65,12 +71,6 @@ getRequestSelector.addEventListener("change", (e) => {
       idInputContainer.appendChild(idInput);
 
       document.querySelector(".get-request-selector").after(idInputContainer);
-    }
-  } else {
-    // Remove the ID input container
-    const idInputContainer = document.querySelector(".get-request-id-container");
-    if (idInputContainer != null) {
-      idInputContainer.remove();
     }
   }
 });
