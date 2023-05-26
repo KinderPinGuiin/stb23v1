@@ -110,40 +110,35 @@ public class STBService implements ISTBService {
 
     @Override
     public STB insertSTBFromString(String stbString) throws FunctionalException {
+        // Validate the given XML and convert it into an STB
         try {
-            // Validate the given XML and convert it into an STB
-            if (!this.xmlService.isXMLValid(stbString, this.resourcesDAO.loadResourceAsFile(Resource.STB_XSD_PATH))) {
-                throw new FunctionalException(
-                    STB23Error.STB_IS_NOT_VALID.getErrorMessage(),
-                    new STBError(STBStatus.ERROR, STBErrorDetail.INVALID),
-                    STB23Error.STB_IS_NOT_VALID.getHttpStatus()
-                );
-            }
-            STB stb = this.xmlService.getInstanceFromString(stbString, STB.class);
-
-            // Check if the STB doesn't already exist
-            STB duplicatedSTB = this.stbRepository.findOneByTitleAndVersionAndDate(
-                stb.getTitle(),
-                stb.getVersion(),
-                stb.getDate()
-            );
-            if (duplicatedSTB != null) {
-                throw new FunctionalException(
-                    STB23Error.STB_IS_NOT_VALID.getErrorMessage(),
-                    new STBError(STBStatus.ERROR, STBErrorDetail.DUPLICATED),
-                    STB23Error.STB_IS_NOT_VALID.getHttpStatus()
-                );
-            }
-
-            // Insert the STB inside the database and returns it
-            return this.stbRepository.save(stb);
-        } catch (IOException | SAXException e) {
+            this.xmlService.isXMLValid(stbString, this.resourcesDAO.loadResourceAsFile(Resource.STB_XSD_PATH));
+        } catch (Exception e) {
+            // Catch the exception in case of validation error
             throw new FunctionalException(
-                e.getMessage(),
-                new SimpleErrorDTO(STB23Error.CANT_VALIDATE_STB.getErrorMessage()),
-                STB23Error.CANT_VALIDATE_STB.getHttpStatus()
+                STB23Error.STB_IS_NOT_VALID.getErrorMessage(),
+                new STBError(STBStatus.ERROR, STBErrorDetail.INVALID, e.getMessage()),
+                STB23Error.STB_IS_NOT_VALID.getHttpStatus()
             );
         }
+        STB stb = this.xmlService.getInstanceFromString(stbString, STB.class);
+
+        // Check if the STB doesn't already exist
+        STB duplicatedSTB = this.stbRepository.findOneByTitleAndVersionAndDate(
+            stb.getTitle(),
+            stb.getVersion(),
+            stb.getDate()
+        );
+        if (duplicatedSTB != null) {
+            throw new FunctionalException(
+                STB23Error.STB_IS_NOT_VALID.getErrorMessage(),
+                new STBError(STBStatus.ERROR, STBErrorDetail.DUPLICATED),
+                STB23Error.STB_IS_NOT_VALID.getHttpStatus()
+            );
+        }
+
+        // Insert the STB inside the database and returns it
+        return this.stbRepository.save(stb);
     }
 
     @Override

@@ -28,13 +28,28 @@ public class STBError implements DTO {
     private STBErrorDetail detail;
 
     /**
-     * @param status The error status.
-     * @param detail The error detail.
+     * The custom error message.
      */
-    public STBError(STBStatus status, STBErrorDetail detail) {
-        super();
+    @XmlElement(name = "error-message")
+    private String errorMessage;
+
+    /**
+     * @param status       The error status.
+     * @param detail       The error detail.
+     * @param errorMessage The custom error message.
+     */
+    public STBError(STBStatus status, STBErrorDetail detail, String errorMessage) {
         this.status = status;
         this.detail = detail;
+        this.errorMessage = errorMessage;
+    }
+
+    /**
+     * @param status       The error status.
+     * @param detail       The error detail.
+     */
+    public STBError(STBStatus status, STBErrorDetail detail) {
+        this(status, detail, null);
     }
 
     public STBError() {
@@ -54,6 +69,14 @@ public class STBError implements DTO {
 
     public void setDetail(STBErrorDetail detail) {
         this.detail = detail;
+    }
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 
 }

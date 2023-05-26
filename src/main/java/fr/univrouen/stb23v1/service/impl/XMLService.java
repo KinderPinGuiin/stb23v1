@@ -29,15 +29,10 @@ import java.io.StringWriter;
 public class XMLService implements IXMLService {
 
     @Override
-    public boolean isXMLValid(String xml, File xsdFile) throws SAXException, IOException {
+    public void isXMLValid(String xml, File xsdFile) throws SAXException, IOException {
         // Get the XML validator and call the validate method
         Validator validator = this.getXMLValidator(xsdFile);
-        try {
-            validator.validate(new StreamSource(new StringReader(xml)));
-            return true;
-        } catch (SAXException e) {
-            return false;
-        }
+        validator.validate(new StreamSource(new StringReader(xml)));
     }
 
     @Override

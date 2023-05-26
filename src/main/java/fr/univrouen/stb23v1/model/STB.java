@@ -5,6 +5,9 @@ import jakarta.xml.bind.annotation.*;
 
 import java.io.Serializable;
 
+/**
+ * An STB (Specification technique des besoins) type.
+ */
 @Entity
 @Table(name = "stb")
 @XmlRootElement(name = "stb", namespace = "http://univrouen.fr/stb23")

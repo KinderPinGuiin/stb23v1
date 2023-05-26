@@ -18,11 +18,10 @@ public interface IXMLService {
      *
      * @param  xml          The XML string.
      * @param  xsdFile      The XSD schema file.
-     * @return              True if the xml is valid, false otherwise.
-     * @throws SAXException Exception thrown if the given XSD can't be parsed.
+     * @throws SAXException Exception thrown if the XML is invalid.
      * @throws IOException  Exception thrown by the underlying XMLReader.
      */
-    boolean isXMLValid(String xml, File xsdFile) throws SAXException, IOException;
+    void isXMLValid(String xml, File xsdFile) throws SAXException, IOException;
 
     /**
      * Convert the given XML string to an instance of the given object class. This method assume that the given xml
