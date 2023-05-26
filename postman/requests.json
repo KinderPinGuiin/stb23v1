@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "04925ffe-01a8-43be-93cb-e17755388503",
+		"name": "stb23_elie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25222834"
+	},
+	"item": [
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Help",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/help",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"help"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Summary (XML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/stb23/resume/xml",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"stb23",
+						"resume",
+						"xml"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Summary (HTML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/stb23/resume",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"stb23",
+						"resume"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show STB (XML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/stb23/xml/{{STB_ID}}",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"stb23",
+						"xml",
+						"{{STB_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show STB (HTML)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/stb23/html/{{STB_ID}}",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"stb23",
+						"html",
+						"{{STB_ID}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insert STB",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Commence par hello\", function () {",
+							"    const bodyContent = pm.response.text();",
+							"    pm.expect(bodyContent).to.include(\"Hello\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<p:stb xmlns:p=\"http://univrouen.fr/stb23\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://univrouen.fr/stb23 stb23.tp1.xsd \">\r\n  <title>POCmoX</title>\r\n  <version>0.1</version>\r\n  <date>2022-01-27T00:00:00</date>\r\n  <description>Projet POCMoX</description>\r\n  <client>\r\n    <entity>Universite de Rouen</entity>\r\n    <person lastname=\"Macadre\">Bruno</person>\r\n    <mail>bruno.macadre@univ-rouen.fr</mail>\r\n    <tel>0606060606</tel>\r\n  </client>\r\n  <team>\r\n    <member>\r\n\t  <person lastname=\"Elie\">Jordan</person>\r\n      <mail>jordan.elie@univ-rouen.fr</mail>\r\n      <function>Le boss quoi</function>\r\n    </member>\r\n    <member>\r\n      <person lastname=\"Levacher\">Jimmy</person>\r\n      <mail>jimmy.levacher@univ-rouen.fr</mail>\r\n      <function>Acte de presence</function>\r\n    </member>\r\n  </team>\r\n  <features>\r\n    <feature name=\"Authentification\" number=\"1\" section=\"1\">\r\n      <description>L'authentification d'un utilisateur</description>\r\n      <priority>9</priority>\r\n    </feature>\r\n    <feature name=\"Creation de VM\" number=\"1\" section=\"2\">\r\n      <description>Creation d'une VM sur Proxmox</description>\r\n      <priority>8</priority>\r\n    </feature>\r\n  </features>\r\n</p:stb>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{API_URL}}/stb23/insert",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"stb23",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete STB",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{API_URL}}/stb23/delete/{{STB_ID}}",
+					"host": [
+						"{{API_URL}}"
+					],
+					"path": [
+						"stb23",
+						"delete",
+						"{{STB_ID}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "API_URL",
+			"value": "https://jordan-stb23v1.cleverapps.io",
+			"type": "string"
+		},
+		{
+			"key": "STB_ID",
+			"value": "1",
+			"type": "string"
+		}
+	]
+}
