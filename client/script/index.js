@@ -11,7 +11,6 @@ const tabList = new TabList({
 
 // Load the tab list and append it after the client title
 document.querySelector("h1").after(tabList.getTabList());
-tabList.focus(3);
 
 /*
  * STB input handling
