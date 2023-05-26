@@ -3,7 +3,9 @@ package fr.univrouen.stb23v1.controller;
 import fr.univrouen.stb23v1.exception.FunctionalException;
 import fr.univrouen.stb23v1.service.IHomeService;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**

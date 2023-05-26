@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style/tab-list.css">
+  <link rel="stylesheet" href="style/index.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/xml-beautify@1.2.3/dist/XmlBeautify.js" defer></script>
+  <script src="script/tab-list.js" defer></script>
+  <script src="script/stb-api-requester.js" defer></script>
+  <script src="script/drag-and-drop-file-input.js" defer></script>
+  <script src="script/index.js" defer></script>
+
+  <title>STB23 Client</title>
+</head>
+<body>
+  <h1>STB23 Client</h1>
+
+  <!-- Parameters tab -->
+  <div class="parameters-tab tab">
+    <h2>API parameters</h2>
+
+    <div class="parameter-container">
+      <label for="api-host">API host :</label>
+      <input type="text" name="api-host-parameter" id="api-host" value="http://localhost">
+    </div>
+    <div class="parameter-container">
+      <label for="api-port">API port :</label>
+      <input type="number" name="api-port-parameter" id="api-port" value="8080">
+    </div>
+  </div>
+
+  <!-- Get requests tab -->
+  <div class="get-requests-tab tab">
+    <h2>GET requests</h2>
+
+    <div class="get-request-selector">
+      <label>Select your request :</label>
+      <select name="request">
+        <option value="/">Home</option>
+        <option value="/help">Help</option>
+        <option value="/stb23/resume/xml">XML summary</option>
+        <option value="/stb23/resume">HTML summary</option>
+        <option value="/stb23/xml/{id}" data-require-id>XML STB</option>
+        <option value="/stb23/html/{id}" data-require-id>HTML STB</option>
+      </select>
+    </div>
+    <button>Send request</button>
+
+    <div class="response-container">
+      <div>
+        <span>Response :</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Insertion tab -->
+  <div class="insertion-tab tab">
+    <h2>STB insertion</h2>
+
+    <div>
+      <label for="stb-insert-input" class="custom-file-input">
+        Upload file
+      </label>
+      <input type="file" name="stb-insert" id="stb-insert-input">
+    </div>
+    <div>
+      <textarea spellcheck="false" class="stb-content" cols="120" rows="15"></textarea>
+    </div>
+    <button>Insert STB</button>
+
+    <div class="response-container">
+      <span>Response :</span>
+    </div>
+  </div>
+
+  <!-- Deletion tab -->
+  <div class="deletion-tab tab">
+    <h2>STB deletion</h2>
+    
+    <div>
+      <label for="delete-stb-id">STB ID : </label>
+      <input type="number" name="delete-stb-id" id="delete-stb-id" value="0">
+      <button>Delete STB</button>
+    </div>
+
+    <div class="response-container">
+      <span>Response :</span>
+    </div>
+  </div>
+</body>
+</html>

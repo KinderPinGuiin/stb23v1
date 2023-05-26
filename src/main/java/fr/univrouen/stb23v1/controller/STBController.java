@@ -37,7 +37,7 @@ public class STBController {
      * @return                     All the summarized STBs contained inside the database, formatted as an HTML.
      * @throws FunctionalException Exception thrown when the STB summaries can't be converted to HTML.
      */
-    @GetMapping(value = "/stb23/resume", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/stb23/resume", produces = MediaType.TEXT_HTML_VALUE + ";charset=UTF-8")
     public String stbSummariesAsHTML() throws FunctionalException {
         STBSummariesDTO stbSummaries = STBAdapter.fromSTBs(this.stbService.getAllSTBs());
         return this.stbService.stbSummariesToHTML(stbSummaries);
@@ -62,7 +62,7 @@ public class STBController {
      * @return                     The STB on an HTML format.
      * @throws FunctionalException Exception thrown when the given ID is invalid or if the STB can't be converted.
      */
-    @GetMapping(value = "/stb23/html/{id}", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/stb23/html/{id}", produces = MediaType.TEXT_HTML_VALUE + ";charset=UTF-8")
     public String getHtmlSTB(@PathVariable("id") Integer id) throws FunctionalException {
         return this.stbService.getSTBAsHTML(id);
     }

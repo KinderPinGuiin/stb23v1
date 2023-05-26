@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin-left: 10px;
+}
+
+.tab {
+  margin: 0 10px;
+}
+
+.response-container {
+  margin: 10px 0;
+}
+
+/* Parameters */
+
+.parameter-container {
+  margin: 10px 0;
+  font-size: 1.2rem;
+}
+
+.parameter-container label {
+  display: inline-block;
+  width: 80px;
+}
+
+/* STB insert file input */
+
+.insertion-tab input[type="file"] {
+  display: none;
+}
+
+.insertion-tab .custom-file-input {
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  border: 3px dashed #ccc;
+  cursor: pointer;
+}
+
+.insertion-tab .custom-file-input.drag-enter {
+  border: 3px dashed #ea3f3f;
+}
+
+.insertion-tab .stb-content {
+  margin-bottom: 10px;
+}
+
+/* Get requests */
+
+.get-requests-tab :is(.get-request-selector, .get-request-id-container) {
+  margin: 10px 0;
+}
